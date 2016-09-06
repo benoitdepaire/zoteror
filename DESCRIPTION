@@ -1,0 +1,13 @@
+Package: zoteror
+Title: Allows to interact with zotero to add citations and create bibtex file
+Version: 0.0.0.9000
+Authors@R: person("Benoît", "Depaire", email = "benoit@depaire.net", role = c("aut", "cre"))
+Description: This package allows you to interact with Zotero to automagically add citations in your Markdown documents and to generate a corresponding bibtex file. This plugin requires that Zotero is running and you have installed the 'Zotero Better Bib(la)tex' add-on in Zotero.
+Depends: R (>= 3.3.1)
+Imports:
+    httr,
+    purrr
+License: GNU AGPLv3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1.9000

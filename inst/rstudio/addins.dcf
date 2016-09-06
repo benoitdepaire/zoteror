@@ -1,0 +1,4 @@
+Name: Add citation
+Description: Adds citation to markdown document
+Binding: pick_citations
+Interactive: false
