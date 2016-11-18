@@ -1,19 +1,34 @@
 #' A Function to create a bibtex file
 #'
 #' This function allows you to create a bibtex file for the citations used in your markdown document.
-#' @param
-#' @keywords
-#' @export Creates a bibtex file in the current directory
+#' @return Creates a bibtex file in the current directory
 #' @examples
 #' create_bibtex()
+#'
+#' @export
 create_bibtex <- function(){
-  jsonstring <- '{"method" :"bibtex", "params": [ ["van_der_aalst_business_2013", "van_aalst_auditing_2010"], {"translator": "betterbibtex"} ] }'
+
+  #retrieve content of current doc
+  temp <- rstudioapi::getActiveDocumentContext()
+  temp <- temp$contents
+  temp <- paste(temp, collapse = " ")
+
+  #Extract all keys (words starting with @)
+  temp <- gsubfn::strapplyc(temp, '@\\w+', simplify=T)
+  #remove @
+  temp <- gsub("@","", temp, fixed = T)
+  #add quotes
+  temp <- shQuote(temp)
+  #create jsonstring
+  temp <- paste(temp, collapse=", ")
+  jsonstring <- paste0('{"method" :"bibtex", "params": [ [',
+                       temp,
+                       '], {"translator": "betterbibtex"} ] }')
 
   temp <- httr::POST(url = 'http://localhost:23119/better-bibtex/schomd',
                encode="json",
                body = jsonstring,
-               content_type("application/x-www-form-urlencoded"),
-               verbose())
+               httr::content_type("application/x-www-form-urlencoded"))
 
   write(httr::content(temp)$result,file = "references.bibtex")
 }

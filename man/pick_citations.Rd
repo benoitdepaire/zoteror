@@ -6,10 +6,14 @@
 \usage{
 pick_citations()
 }
+\value{
+Adds reference keys in your markdown document
+}
 \description{
 This function allows you to select citations from your zotero library to add the appropriate keys to your markdown document
 }
 \examples{
 pick_citations()
+
 }
 

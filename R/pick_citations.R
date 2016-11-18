@@ -4,12 +4,11 @@ library(purrr)
 #' A Function to pick citations from Zotero
 #'
 #' This function allows you to select citations from your zotero library to add the appropriate keys to your markdown document
-#' @param
-#' @keywords
-#' @export Adds reference keys in your markdown document
+#' @return Adds reference keys in your markdown document
 #' @examples
 #' pick_citations()
-
+#'
+#' @export
 pick_citations <- function(){
   r <- httr::GET("http://localhost:23119/better-bibtex/cayw")
   if(httr::status_code(r)==200){

@@ -6,10 +6,14 @@
 \usage{
 create_bibtex()
 }
+\value{
+Creates a bibtex file in the current directory
+}
 \description{
 This function allows you to create a bibtex file for the citations used in your markdown document.
 }
 \examples{
 create_bibtex()
+
 }
 
