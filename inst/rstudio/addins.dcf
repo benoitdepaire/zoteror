@@ -2,3 +2,8 @@ Name: Add citation
 Description: Adds citation to markdown document
 Binding: pick_citations
 Interactive: false
+
+Name: Create bibtex
+Description: Creates a bibtex file with the relevant references
+Binding: create_bibtex
+Interactive: false

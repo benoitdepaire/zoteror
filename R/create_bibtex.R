@@ -10,6 +10,7 @@ create_bibtex <- function(){
 
   #retrieve content of current doc
   temp <- rstudioapi::getActiveDocumentContext()
+  path <- temp$path
   temp <- temp$contents
   temp <- paste(temp, collapse = " ")
 
@@ -30,5 +31,7 @@ create_bibtex <- function(){
                body = jsonstring,
                httr::content_type("application/x-www-form-urlencoded"))
 
-  write(httr::content(temp)$result,file = "references.bibtex")
+
+  path <- gsub('/[^/]*$', "",path)
+  write(httr::content(temp)$result,file = paste(path,"bibliography.bib",sep = "/"))
 }
